@@ -6,4 +6,5 @@
 
 # 知识导图
 
-![image](https://github.com/ZY16263646566679/Templates/assets/118327380/fe4a57b8-ebe8-4cfb-9881-229568c3f1eb)
+![image](https://github.com/ZY16263646566679/Templates/assets/118327380/b3d29fc1-2e2e-4c1c-a16b-5a10a555a3e9)
+
