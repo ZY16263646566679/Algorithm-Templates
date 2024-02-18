@@ -6,7 +6,7 @@ using namespace std;
  * n 组物品，背包容量为 m
  * 每组物品只能选一个，第 i 组物品有 s[i] 个
  * 第 i 组第 j 个物品的体积和价值为 v[i][j] 和 w[i][j]
-*/
+ */
 const int N = 105, M = 1e4 + 5;
 int n, m, s[N], v[N][N], w[N][N], f[M];
 
@@ -24,7 +24,7 @@ int solve() {
  * n 个课程，m 天学习时间
  * 每门课只能选一次
  * w[i][j] 表示在 i 课程上花 j 天学习所获得的价值
-*/
+ */
 int n, m, f[105], w[105][105];
 
 int solve() {
