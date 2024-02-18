@@ -1,0 +1,14 @@
+{
+    "files.associations": {
+        "iosfwd": "cpp",
+        "chrono": "cpp",
+        "span": "cpp",
+        "iostream": "cpp",
+        "limits": "cpp",
+        "cmath": "cpp",
+        "ratio": "cpp",
+        "cctype": "cpp",
+        "cassert": "cpp",
+        "ccomplex": "cpp"
+    }
+}
