@@ -1,3 +1,4 @@
+// 分治法构造二叉树
 #include <bits/stdc++.h>
 using namespace std;
 
