@@ -17,7 +17,6 @@ void init() {
 }
 
 void solve() {
-    init();
     for (int len = 2; len <= n; len++) { // 区间长度
         for (int i = 1, j = i + len - 1; j <= n; i++, j++) { // i：左端点，j：右端点
             for (int k = i; k < j; k++) {

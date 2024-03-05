@@ -1,5 +1,5 @@
 // Floyd算法--DP，并打印路径
-// 时间复杂度O(n^3)，无法判断负环
+// 时间复杂度O(n³)，无法判断负环
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -22,6 +22,7 @@ void init() { // 下标从1开始
         // 如果有两个相邻节点之间可能会有多条边，还需要再取最小值
     }
 }
+
 void floyd() { // 有向图
     for (int k = 1; k <= n; k++) // k循环必须写在外层
         for (int i = 1; i <= n; i++) {
@@ -68,10 +69,12 @@ void print_path(int x, int y) {
 const int N = 1005;
 int n, m;
 bitset<N> d[N]; // 下标从0开始，表示关系矩阵
+
 void init() {
     for (int i = 0, u, v; i < m; i++)
         cin >> u >> v, d[u][v] = 1;
 }
+
 void floyd() {
     for (int k = 0; k < n; k++)
         for (int i = 0; i < n; i++)

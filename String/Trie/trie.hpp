@@ -43,10 +43,14 @@ public:
     }
 };
 
-// 静态数组存储
+/**
+ * 静态数组存储
+ * 也可以用 map<char, int> trie[N] 来存储
+ * 0为根节点，trie[i][j]表示id为i的节点的子节点j的id
+ * num[i]：这个前缀出现的次数，v[i]：这个单词对应的值
+ */
 const int N = 1e6 + 5;
-int trie[N][26], id; // 0为根节点，trie[i][j]表示id为i的节点的子节点j的id
-int num[N], v[N]; // num[i]：这个前缀出现的次数，v[i]：这个单词对应的值
+int trie[N][26], id, num[N], v[N];
 
 void insert(string& s, int val) {
     int p = 0;

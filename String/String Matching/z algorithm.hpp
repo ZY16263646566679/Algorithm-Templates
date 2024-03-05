@@ -1,9 +1,9 @@
-// Z 函数（扩展 KMP）
+// Z 函数
 #include <bits/stdc++.h>
 using namespace std;
 
 /**
- * z[i]：下标 i 开始的后缀与 s 的最长公共前缀（lcp）
+ * z[i]：下标 i 开始的后缀与 s 的最长公共前缀（lcp）的长度
  */
 const int N = 1e6 + 5;
 int z[N];

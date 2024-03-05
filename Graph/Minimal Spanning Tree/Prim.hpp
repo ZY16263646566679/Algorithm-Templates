@@ -13,7 +13,7 @@ bool done[N];
 
 int prim() {
     int ans = 0, cnt = 1;
-    std::priority_queue<pii, vector<pii>, greater<pii>> q;
+    priority_queue<pii, vector<pii>, greater<pii>> q;
     q.push({ 0, 1 });
     while (!q.empty()) {
         pii p = q.top();
