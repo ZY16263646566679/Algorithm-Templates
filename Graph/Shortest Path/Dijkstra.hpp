@@ -34,7 +34,7 @@ void dijkstra(int s) { // 以 s 为起点
     }
 }
 
-// 堆优化的 Dijkstra，平均时间复杂度O(mlogn)，最差时间复杂度（稠密图）O(n²logn)
+// 堆优化的 Dijkstra，平均时间复杂度O(mlogn)，最坏时间复杂度（稠密图）O(n²logn)
 void dijkstra(int s) {
     init();
     dis[s] = 0;

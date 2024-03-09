@@ -1,4 +1,4 @@
-// Bellman-Ford算法的优化 + SPFA的简单优化
+// Bellman-Ford算法的优化 + SPFA的简单优化，时间复杂度O(m)，最坏情况下O(mn)
 #include <bits/stdc++.h>
 using namespace std;
 
