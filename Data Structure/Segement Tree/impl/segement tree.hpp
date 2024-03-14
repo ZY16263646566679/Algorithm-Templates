@@ -7,22 +7,22 @@ using namespace std;
 #define ls l(p), l, mid
 #define rs r(p), mid + 1, r
 
-const int maxn = 1e5 + 5;
+const int N = 1e5 + 5;
 // 下标要从1开始，因为0 << 1并不是0号节点的左儿子
-int n, v[maxn + 1], tree[maxn << 2], tag[maxn << 2];
+int n, v[N + 1], t[N << 2], tag[N << 2];
 
-void up(int p) { tree[p] = tree[l(p)] + tree[r(p)]; } // tree[p] = max(tree[ls(p)], tree[rs(p)]);
+void up(int p) { t[p] = t[l(p)] + t[r(p)]; } // t[p] = max(t[ls(p)], t[rs(p)]);
 
 void build(int p, int l, int r) { // 区间[l, r]
     tag[p] = 0;
-    if (l == r) { tree[p] = v[l]; return; }
+    if (l == r) { t[p] = v[l]; return; }
     build(ls);
     build(rs);
     up(p);
 }
 
 void addtag(int p, int l, int r, int d) { // 如果只有单点修改，不需要用lazy-tag
-    tree[p] += d * (r - l + 1); // 更新值
+    t[p] += d * (r - l + 1); // 更新值
     tag[p] += d; // 打标签
 }
 
@@ -41,7 +41,7 @@ void update(int L, int R, int p, int l, int r, int d) {
 }
 
 int query(int L, int R, int p, int l, int r) {
-    if (L <= l && r <= R) return tree[p];
+    if (L <= l && r <= R) return t[p];
     if (tag[p]) down(p, l, r);
     int res = 0;
     if (L <= mid) res += query(L, R, ls);

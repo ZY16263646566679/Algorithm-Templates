@@ -27,7 +27,8 @@ void tarjan() {
         if (!num[i]) dfs(i);
 }
 
-/** 还有另外一种写法
+/**
+ * 还有另外一种写法
  * if (!num[v]) {
  *     dfs(v);
  *     low[u] = min(low[u], low[v]);

@@ -1,7 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-/** 扩展 gcd
+/**
+ * 扩展 gcd
  * 1. 用于解二元不定方程 ax + by = (a, b)
  * 特解为 x，y；返回 (a, b)；
  * 2. 用于求逆元

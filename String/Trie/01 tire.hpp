@@ -4,7 +4,8 @@ using namespace std;
 
 const int N = 1e5 + 5;
 int son[N][2], idx, num[N]; // idx为0的节点为根节点
-void insert(int x){
+
+void insert(int x) {
     int p = 0;
     for(int i = 30; ~i; i--) {
         int u = x >> i & 1; //判断x这个数的第i位上的数是1还是0
@@ -13,6 +14,7 @@ void insert(int x){
         p = son[p][u];
     }
 }
+
 void erase(int x) {
     int p = 0;
     for (int i = 30; ~i; i--) {
@@ -21,6 +23,7 @@ void erase(int x) {
         p = son[p][u];
     }
 }
+
 int query(int x) {
     int p = 0, res = 0;
     for(int i = 30; ~i; i--) {

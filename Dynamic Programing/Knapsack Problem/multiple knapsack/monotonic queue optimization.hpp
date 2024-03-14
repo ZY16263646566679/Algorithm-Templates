@@ -1,4 +1,5 @@
-/** 多重背包の单调队列优化
+/**
+ * 多重背包の单调队列优化
  * dp[j]    =     dp[j]
  * dp[j+v]  = max(dp[j] +  w,  dp[j+v])
  * dp[j+2v] = max(dp[j] + 2w,  dp[j+v] +  w, dp[j+2v])

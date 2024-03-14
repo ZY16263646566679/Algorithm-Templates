@@ -24,7 +24,8 @@ void init() {
     }
 }
 
-/** 区间[l, r]内的子字符串的Hash值
+/**
+ * 区间[l, r]内的子字符串的Hash值
  * 当prehash[r + 1] < prehash[l] * power[r - l + 1]时，作差的结果仍然是应有的哈希值
  * unsigned(-x) = 2^32 - x
  * 相当于自动加上 2^32

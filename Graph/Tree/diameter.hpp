@@ -26,7 +26,8 @@ int diameter() {
     return dis[ed];
 }
 
-/** 法二：树形DP
+/**
+ * 法二：树形DP
  * d1，d2：到叶子节点的最长和次长路
  * root：直径在树中的根节点
  * pre1，pre2：最长和次长路的前驱节点

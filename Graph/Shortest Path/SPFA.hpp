@@ -38,7 +38,8 @@ bool spfa(int s) { // 返回值表示是否存在负环
     return false;
 }
 
-/** LLL出队优化（Large Label Last）+ SLF入队优化（Small Lebal First）
+/**
+ * LLL出队优化（Large Label Last）+ SLF入队优化（Small Lebal First）
  * q.size()类型是size_t(unsigned long long)，要转换成有符数，否则无法比较负数
  */
 bool spfa(int s) { // 返回值表示是否存在负环

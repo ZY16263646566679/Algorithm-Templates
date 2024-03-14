@@ -4,17 +4,19 @@ using namespace std;
 
 #define lowbit(x) ((x) & -(x))
 const int N = 1e5 + 5;
-int n, tree[N]; // 下标从1开始，不然无法进行lowbit操作
+int n, t[N]; // 下标从1开始，不然无法进行lowbit操作
+
 void add(int x, int d) {
     while (x <= n) {
-        tree[x] += d;
+        t[x] += d;
         x += lowbit(x);
     }
 }
+
 int sum(int x) { // [1, x]区间元素和
     int sum = 0;
     while (x) {
-        sum += tree[x];
+        sum += t[x];
         x -= lowbit(x);
     }
     return sum;
@@ -24,6 +26,7 @@ int sum(int x) { // [1, x]区间元素和
 void update(int x, int d) {
     add(x, d);
 }
+
 int query(int l, int r) {
     return sum(r) - sum(l - 1);
 }
@@ -33,37 +36,46 @@ void update(int l, int r, int d) {
     add(l, d);
     add(r + 1, -d);
 }
+
 int query(int x) {
     return sum(x);
 }
 
-/** 区间修改，区间查询[l, r]
+/**
+ * 区间修改，区间查询[l, r]
  * sum(a[1...k]) = ∑ai = k * ∑di - ∑(i - 1) * di, (i in [1, k])
  * => 维护两个树状数组，一个是d[i]，另一个是(i - 1) * d[i]
  */
-int tree1[N];
+int t1[N], t2[N];
 void add(bool flag, int x, int d) { // flag用于判断是维护哪个数组
     while (x <= n) {
-        if (!flag) tree[x] += d;
-        else tree1[x] += d;
+        if (!flag)
+            t1[x] += d;
+        else
+            t2[x] += d;
         x += lowbit(x);
     }
 }
+
 int sum(bool flag, int x) {
     int sum = 0;
     while (x) {
-        if (!flag) sum += tree[x];
-        else sum += tree1[x];
+        if (!flag)
+            sum += t1[x];
+        else
+            sum += t2[x];
         x -= lowbit(x);
     }
     return sum;
 }
+
 void update(int l, int r, int d) { // 区间修改
     add(0, l, d);
     add(0, r + 1, -d);
     add(1, l, d * (l - 1));
     add(1, r + 1, -d * r); // d * r = d * (r + 1 - 1)
 }
+
 int query(int l, int r) { // 区间查询
     int sum0 = (l - 1) * sum(0, l - 1) - sum(1, l - 1);
     int sum1 = r * sum(0, r) - sum(1, r);

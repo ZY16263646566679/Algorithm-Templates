@@ -101,7 +101,8 @@ void dfs(int u, int fa = -1, bool keep = 1) {
     }
 }
 
-/** 更好理解的启发式合并：将小树合并到大树，时间复杂度也是O(nlogn)
+/**
+ * 更好理解的启发式合并：将小树合并到大树，时间复杂度也是O(nlogn)
  * if (t1.size() < t2.size()) swap(t1, t2);
  * t1.merge(t2);
  */
