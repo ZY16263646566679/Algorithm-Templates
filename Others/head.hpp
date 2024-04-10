@@ -109,7 +109,7 @@ inline void read(auto& t, auto&... args) {
 }
 
 static const auto FAST_IO = [] {
-    cin.tie(nullptr) -> sync_with_stdio(false);
+    cin.tie(0) -> sync_with_stdio(0);
     return nullptr;
 };
 

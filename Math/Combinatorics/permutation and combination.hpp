@@ -83,7 +83,7 @@ void print_subset(int n, vector<int> arr) {
  * n 元集合中元素数量为 k 的子集遍历（Gosper's Hack）
  * 从右往左找到第一个01变成10，后面的1都移到最右边：10110110 -> 10111001，二进制位中的1的数量不变
  * sub = (1 << k) - 1 // 刚开始的子集为最右边 k 个 1
- * while sub < (1 << n):
+ * while sub < 1 << n:
  *     ... // 一些操作
  *     left = sub + lowbit(sub)
  *     right = (left ^ sub) / lowbit(sub) >> 2
