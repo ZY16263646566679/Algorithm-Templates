@@ -25,7 +25,7 @@ void dijkstra(int s) {
         dis[u] = d;
         for (auto& [v, w] : e[u])
             if (d + w < dis[v]) {
-                dis[v] = d + w;
+                dis[v] = d + w; // 小优化
                 q.push({ d + w, v });
                 pre[v] = u;
             }
