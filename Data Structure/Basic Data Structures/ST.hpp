@@ -4,7 +4,7 @@ using namespace std;
 #define M(a, b) (a >= b ? a : b) // 最大值
 
 const int maxn = 1e5 + 5;
-int n, a[maxn], st[maxn][22]; // 下标从一开始
+int n, a[maxn], st[maxn][22]; // 下标从1开始
 
 // 这里是求最大值
 void init(int n) {
