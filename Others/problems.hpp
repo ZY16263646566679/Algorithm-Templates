@@ -5,22 +5,21 @@ namespace N_Queens {
     int dfs(int row) {
         int res = 0;
         for (int i = 0; i < n; i++) {
-            if (grid[row][i] == 0) {
-                if (row == n - 1) {
-                    res++;
-                    continue;
-                }
-                for (int j = 1; row + j < n; j++) {
-                    grid[row + j][i]++;
-                    if (i - j >= 0) grid[row + j][i - j]++;
-                    if (i + j < n) grid[row + j][i + j]++;
-                }
-                res += dfs(row + 1);
-                for (int j = 1; row + j < n; j++) {
-                    grid[row + j][i]--;
-                    if (i - j >= 0) grid[row + j][i - j]--;
-                    if (i + j < n) grid[row + j][i + j]--;
-                }
+            if (grid[row][i]) continue;
+            if (row == n - 1) {
+                res++;
+                continue;
+            }
+            for (int j = 1; row + j < n; j++) {
+                grid[row + j][i]++;
+                if (i - j >= 0) grid[row + j][i - j]++;
+                if (i + j < n) grid[row + j][i + j]++;
+            }
+            res += dfs(row + 1);
+            for (int j = 1; row + j < n; j++) {
+                grid[row + j][i]--;
+                if (i - j >= 0) grid[row + j][i - j]--;
+                if (i + j < n) grid[row + j][i + j]--;
             }
         }
         return res;
