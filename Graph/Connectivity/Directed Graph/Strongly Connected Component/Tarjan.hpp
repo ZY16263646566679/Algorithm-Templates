@@ -1,3 +1,4 @@
+// Tarjan 算法求强连通分量
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -14,7 +15,7 @@ void dfs(int u) {
         if (!sccno[v] && low[v] < low[u]) low[u] = low[v];
     }
     if (low[u] != num[u]) return;
-    cnt++;
+    cnt++; // SCC 数量加一
     while (1) {
         int v = st[--top];
         sccno[v] = cnt;

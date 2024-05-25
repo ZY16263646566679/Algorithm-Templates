@@ -14,13 +14,13 @@ using namespace std;
 
 const int N = 1e5 + 5;
 int n, m, deg[N], del[N]; // 记录度数、删边后的第一个下标
-stack<int> st;
 vector<int> e[N];
+stack<int> st; // 最后倒序输出
 
 void dfs(int u) {
     int len = e[u].size();
-    for (int i = del[u]; i < len; i = del[u])
-        del[u]++, dfs(e[u][i]);
+    while (del[u] < len)
+        dfs(e[u][del[u]++]);
     st.push(u);
 }
 
@@ -37,3 +37,8 @@ int get_start() {
     }
     return c[-1] == c[1] ? s : 0;
 }
+
+/**
+ * 也可以用堆来存储边：priority_queue<int, vi, greater<>> e[N]
+ * 然后从堆中取最小值来保证字典序最小
+ */
