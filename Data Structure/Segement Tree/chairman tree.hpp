@@ -6,6 +6,7 @@ const int N = 2e5 + 5;
 // a[]: 原始数组，b[]: 离散化后的数组，rt: 主席树根节点，cnt: 主席树节点数量
 int n, a[N], b[N], rt[N], cnt;
 struct {
+    // 左右子树，权值
     int l, r, v;
 } t[N << 5];
 
