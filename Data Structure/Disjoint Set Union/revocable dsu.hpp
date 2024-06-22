@@ -3,15 +3,12 @@
 using namespace std;
 
 const int N = 1e6 + 5;
-int n, s[N], sz[N], top; // 下标从1开始
-pair<int, int> st[N];
+int n, s[N], sz[N], st[N], top; // 下标从1开始
 
 void init() {
     top = 0;
-    for (int i = 1; i <= n; i++) {
-        s[i] = i;
-        sz[i] = 1;
-    }
+    for (int i = 1; i <= n; i++)
+        s[i] = i, sz[i] = 1;
 }
 
 int find(int x) {
@@ -22,15 +19,19 @@ int find(int x) {
 void merge(int x, int y) {
     int rx = find(x), ry = find(y);
     if (sz[rx] < sz[ry]) swap(rx, ry);
-    s[ry] = rx;
-    sz[rx] += sz[ry];
-    st[top++] = make_pair(rx, ry);
+    s[ry] = rx, sz[rx] += sz[ry];
+    st[top++] = ry;
 }
 
 // 撤销最后一次合并
 void revocate() {
     if (!top) return;
-    auto [rx, ry] = st[--top];
-    sz[rx] -= sz[ry];
-    s[ry] = ry;
+    int y = st[--top];
+    sz[s[y]] -= sz[y], s[y] = y;
 }
+
+/**
+ * 注意，在合并时，即使 rx == ry，也要执行 sz[rx] += sz[ry]，并加到记录栈中
+ * 因为撤销合并时，需要将 sz[ry] 减去
+ * 否则，撤销合并后，sz[rx] 可能比 sz[ry] 大
+ */

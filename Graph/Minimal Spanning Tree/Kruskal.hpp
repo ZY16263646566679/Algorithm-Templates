@@ -1,7 +1,8 @@
-// Kruskal 算法求最小生成树，实际运行效率高于 Prim
+// Kruskal 算法求最小生成树
 #include <bits/stdc++.h>
 using namespace std;
 
+// 时间复杂度 O(mlogm)，实际运行效率高于 Prim
 const int N = 5005;
 struct edge {
     int u, v, w;
