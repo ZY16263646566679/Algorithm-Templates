@@ -37,5 +37,5 @@ int exgcd(int a, int b, int& x, int& y) {
 /**
  * Fermat's little theorem（费马小定理）
  * 若 p 为质数，a 为整数，则 a^p-1 ≡ 1(mod p)
- * 因此，a 的逆元为 a^(p-2)
+ * 因此，a 的逆元为 a^(p-2)，可以用快速幂求解
  */
