@@ -18,6 +18,7 @@ void full_permutation(vector<int> arr) {
         cout << endl;
     } while (next_permutation(arr.begin(), arr.end()));
 }
+
 // 递归输出从下标first开始的n个元素的全排列
 void Perm(vector<int>& nums, int first, int n) {
     if (first == n) {
@@ -31,6 +32,7 @@ void Perm(vector<int>& nums, int first, int n) {
         swap(nums[first], nums[i]);
     }
 }
+
 // 求下一个排列
 bool nextPermutation(vector<int>& nums) {
     int n = nums.size(), i = n - 2;

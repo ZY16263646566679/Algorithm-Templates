@@ -30,7 +30,7 @@ void init() {
 void build() {
     while (q.size() >= k) {
         ll h = 0, w = 0; // h：最大高度，w：权值和
-        for (int i = 0; i < k; i++) {
+        for (int i = k; i--;) {
             node t = q.top();
             q.pop();
             if (t.h > h) h = t.h;

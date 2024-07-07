@@ -8,7 +8,7 @@ const int base = 131;
 bool RabinKarp(string t, string p) {
     int n = t.length(), m = p.length();
     ull h = 1;
-    for (int i = 0; i < m - 1; i++)
+    for (int i = m - 1; i--;)
         h = h * base;
     ull t_hash = 0, p_hash = 0;
     for (int i = 0; i < m; i++) {

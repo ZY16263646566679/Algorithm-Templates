@@ -38,7 +38,7 @@ void dijkstra(int s) { // 以 s 为起点
     bool done[N];
     memset(done, 0, sizeof(done));
     dis[s] = 0;
-    for (int i = 0; i < n - 1; i++) { // 只需 n - 1 次即可
+    for (int i = n - 1; i--;) { // 只需 n - 1 次即可
         int u = -1, d = inf;
         for (int j = 0; j < n; j++)
             if (!done[j] && dis[j] < d)

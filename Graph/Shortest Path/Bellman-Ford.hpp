@@ -17,9 +17,9 @@ void init(int s) {
 
 void bellman_ford(int s) {
     init(s);
-    for (int i = 0; i < n; i++)
-        for (int j = 0, from = e[0].u, to = e[0].v, w = e[0].w; j < cnt; j++) {
-            from = e[j].u, to = e[j].v, w = e[j].w;
+    for (int i = n; i--;)
+        for (int j = 0; j < cnt; j++) {
+            int from = e[j].u, to = e[j].v, w = e[j].w;
             if (dis[from] + w < dis[to]) dis[to] = dis[from] + w;
         }
 }

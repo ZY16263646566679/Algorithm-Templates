@@ -2,7 +2,16 @@
 using namespace std;
 
 /**
- * 扩展 gcd，返回 (a, b)；
+ * 扩展 gcd，返回 (a, b)
+ *
+ * 证明：
+ * ∵ ax + by = (a, b) = (b, a % b) = bx' + (a % b)y'
+ * ∴ a % b = a - [a / b] * b
+ * ∴ ax + by = bx' + (a - ⌊a / b⌋ * b)y'
+ *  = ay' + b(x' - ⌊a / b⌋ * y')
+ * ∴ x = y', y = x' - ⌊a / b⌋ * y'
+ *
+ * 用途：
  * 1. 用于解二元不定方程 ax + by = (a, b)
  * 特解为 x0，y0，通解为 x0 + kb / (a, b), y0 - ka / (a, b)，k 为整数
  * 2. 用于求逆元
@@ -33,9 +42,3 @@ int exgcd(int a, int b, int& x, int& y) {
     }
     return a;
 }
-
-/**
- * Fermat's little theorem（费马小定理）
- * 若 p 为质数，a 为整数，则 a^p-1 ≡ 1(mod p)
- * 因此，a 的逆元为 a^(p-2)，可以用快速幂求解
- */

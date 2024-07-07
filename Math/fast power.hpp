@@ -4,7 +4,9 @@ using namespace std;
 using ll = long long;
 
 const int mod = 1e9 + 7;
-ll powTable[11][64];
+int powTable[11][64];
+
+// 打表
 void init_powTable() {
     for (int i = 0; i <= 60; i++)
         powTable[1][i] = 1;
@@ -15,29 +17,29 @@ void init_powTable() {
     }
 }
 
-ll fastPow0(int x, ll n) {
-    ll res = 1;
-    for (int i = 0; n >= 1ull << i && i < 64; i++)
+int fastPow0(int x, int n) {
+    int res = 1;
+    for (int i = 0; n >= 1ll << i && i < 64; i++)
         if (n & 1 << i)
-            res = res * powTable[x][i] % mod;
+            res = (ll)res * powTable[x][i] % mod;
     return res;
 }
 
-ll fastPow(ll x, ll n) {
+// 快速幂递归版
+int fastPow1(int x, int n) {
     if (n == 0) return 1;
     if (n == 1) return x % mod;
-    ll temp = fastPow(x, n >> 1) % mod;
-    if (n & 1) return temp * temp * x % mod;
-    return temp * temp % mod;
+    int t = fastPow1(x, n >> 1) % mod;
+    return (ll)t * t % mod * (n & 1 ? x : 1) % mod;
 }
 
-ll fastPow(ll x, ll n, int mod) { // 快速幂非递归版
-    ll res = 1;
+// 快速幂非递归版
+int fastPow2(int x, int n) {
+    int res = 1;
     x %= mod;
-    while (n) {
-        if (n & 1) res = res * x % mod;
-        x = x * x % mod;
-        n >>= 1;
+    for (; n; n >>= 1) {
+        if (n & 1) res = (ll)res * x % mod;
+        x = (ll)x * x % mod;
     }
     return res;
 }

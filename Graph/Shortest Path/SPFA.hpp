@@ -26,7 +26,7 @@ bool spfa(int s) { // 返回值表示是否存在负环
         for (auto& [v, w] : e[u]) {
             if (dis[u] + w >= dis[v]) continue; // 无法更新距离
             dis[v] = dis[u] + w;
-            pre[v] = u;            // 记录路径
+            pre[v] = u; // 记录路径
             if (!inq[v]) {
                 q.push_back(v);
                 inq[v] = true;

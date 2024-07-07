@@ -44,8 +44,7 @@ bool miller_rabin(ll n) { // Miller-Rabin素性检验
     if (n < 2) return false;
     if (n == 2) return true;
     if (n % 2 == 0) return false;
-    for (int i = 0; i < 7; i++) {
+    for (int i = 0; i < 7; i++)
         if (check(a[i], n)) return false;
-    }
     return true;
 }
