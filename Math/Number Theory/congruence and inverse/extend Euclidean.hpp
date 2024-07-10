@@ -1,18 +1,20 @@
+// 扩展欧几里得算法
 #include <bits/stdc++.h>
 using namespace std;
 
 /**
  * 扩展 gcd，返回 (a, b)
- *
  * 证明：
+ * 1）特殊的；
+ * 当 a = (a, b), b = 0 时，有特解 x = 1, y = 0
+ * 2）一般地：
  * ∵ ax + by = (a, b) = (b, a % b) = bx' + (a % b)y'
  * ∴ a % b = a - [a / b] * b
  * ∴ ax + by = bx' + (a - ⌊a / b⌋ * b)y'
  *  = ay' + b(x' - ⌊a / b⌋ * y')
  * ∴ x = y', y = x' - ⌊a / b⌋ * y'
- *
  * 用途：
- * 1. 用于解二元不定方程 ax + by = (a, b)
+ * 1. 用于解二元不定方程（丢番图方程） ax + by = (a, b)
  * 特解为 x0，y0，通解为 x0 + kb / (a, b), y0 - ka / (a, b)，k 为整数
  * 2. 用于求逆元
  * ax ≡ 1(mod m) <=> ax + my = 1（m -> b）
@@ -42,3 +44,5 @@ int exgcd(int a, int b, int& x, int& y) {
     }
     return a;
 }
+
+// 注意：参数需要为正

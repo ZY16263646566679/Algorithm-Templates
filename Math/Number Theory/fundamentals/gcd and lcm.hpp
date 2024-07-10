@@ -19,5 +19,5 @@ int gcd(int a, int b) { // 非递归版
 
 // 最小公倍数
 int lcm(int a, int b) {
-    return a * b / gcd(a, b);
+    return a / gcd(a, b) * b; // 先除后乘防止溢出
 }
