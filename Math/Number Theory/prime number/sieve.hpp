@@ -3,7 +3,7 @@ using namespace std;
 using ll = long long;
 
 const int N = 1e5 + 5;
-int cnt, prime[N]; // cnt：素数个数
+vector<int> primes; // 素数
 bool vis[N]; // 是否被筛
 
 // 埃式筛（时间复杂度约等于O(n)）
@@ -21,10 +21,11 @@ int E_sieve(int n) {
 // 欧拉筛（线性筛，O(n)）
 void euler_sieve(int n) {
     for (int i = 2; i <= n; i++) {
-        if (!vis[i]) prime[cnt++] = i;
-        for (int j = 0; j < cnt && i * prime[j] <= n; j++) { // 筛掉i的素数倍
-            vis[i * prime[j]] = true;
-            if (i % prime[j] == 0) break; // 保证每个合数只被它最小的质因数筛一次，从而保证线性
+        if (!vis[i]) primes.push_back(i);
+        for (int p : primes) {  // 筛掉i的素数倍
+            if (i * p > n) break;
+            vis[i * p] = true;
+            if (i % p == 0) break; // 保证每个合数只被它最小的质因数筛一次，从而保证线性
         }
     }
 }
