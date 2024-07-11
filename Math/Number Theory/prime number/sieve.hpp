@@ -3,15 +3,16 @@ using namespace std;
 using ll = long long;
 
 const int N = 1e5 + 5;
-vector<int> primes; // 素数
 bool vis[N]; // 是否被筛
+vector<int> primes; // 素数
 
 // 埃式筛（时间复杂度约等于O(n)）
 int E_sieve(int n) {
-    for (int i = 2; i * i <= n; i++)
-        if (!vis[i])
-            for (int j = i * i; j <= n; j += i)
-                vis[j] = true;
+    for (int i = 2; i * i <= n; i++) {
+        if (vis[i]) continue;
+        for (int j = i * i; j <= n; j += i)
+            vis[j] = true;
+    }
     int cnt = 0;
     for (int i = 2; i <= n; i++)
         if (!vis[i]) cnt++;
