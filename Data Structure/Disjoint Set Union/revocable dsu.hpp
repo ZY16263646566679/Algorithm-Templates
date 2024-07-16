@@ -3,7 +3,7 @@
 using namespace std;
 
 const int N = 1e6 + 5;
-int n, s[N], sz[N], st[N], top; // 下标从1开始
+int n, s[N], sz[N], st[N], top; // 下标从1开始，st记录合并的集合，sz记录集合的秩（不是大小）。
 
 void init() {
     top = 0;
@@ -31,7 +31,7 @@ void revocate() {
 }
 
 /**
- * 注意，在合并时，即使 rx == ry，也要执行 sz[rx] += sz[ry]，并加到记录栈中
+ * 注意，在合并时，不可以进行路径压缩；
+ * 即使 rx == ry，也要执行 sz[rx] += sz[ry]，并加到记录栈中
  * 因为撤销合并时，需要将 sz[ry] 减去
- * 否则，撤销合并后，sz[rx] 可能比 sz[ry] 大
  */

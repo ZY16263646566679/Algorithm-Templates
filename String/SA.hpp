@@ -1,39 +1,34 @@
+// 后缀数组，可用于求解最长重复子串、最长公共子串
 #include <bits/stdc++.h>
 using namespace std;
     
-const int N = 1e5 + 5;
-char s[N];
-int rk[N << 1], sa[N << 1], tmp[N << 1], cnt[N], rkt[N];
+const int N = 3e5 + 5;
+char s[N]; // 下标从1开始，scanf("%s", s + 1)
+int n, k, sa[N], rk[N << 1], tmp[N << 1]; // sa[i]: 排名为 i 的后缀的起始位置，rk[i]: s[i..n-1] 的排名
 
-void init_sa(int n) { // index: [1, n]
-    if (n == 1) return void(rk[1] = sa[1] = 1);
+// 倍增法求 SA
+void init_sa() { // index: [1, n]
+    for (int i = 1; i <= n; ++i) sa[i] = i, rk[i] = s[i];
+        for (k = 1; k < n; k <<= 1) {
+            sort(sa + 1, sa + n + 1, [](int x, int y) {
+                return rk[x] == rk[y] ? rk[x + k] < rk[y + k] : rk[x] < rk[y];
+            });  // 这里用到了 lambda
+            memcpy(tmp, rk, sizeof(rk));
+            // 由于计算 rk 的时候原来的 rk 会被覆盖，要先复制一份
+            for (int p = 0, i = 1; i <= n; i++)
+                if (tmp[sa[i]] == tmp[sa[i - 1]] && tmp[sa[i] + k] == tmp[sa[i - 1] + k])
+                    rk[sa[i]] = p;
+                else rk[sa[i]] = ++p; // 若两个子串相同，它们对应的 rk 也需要相同，所以要去重
+      }
+}
 
-    int m = 128;
-    for (int i = 1; i <= n; ++i)
-        ++cnt[rk[i] = s[i]];
-    for (int i = 1; i <= m; ++i)
-        cnt[i] += cnt[i - 1];
-    for (int i = n; i >= 1; --i)
-        sa[cnt[rk[i]]--] = i;
+int h[N]; // h[i]: sa[i - 1] 和 sa[i] 的最长公共前缀长度
 
-    for (int w = 1;; w <<= 1) {
-        for (int i = n; i > n - w; --i)
-            tmp[n - i + 1] = i;
-        for (int i = 1, p = w; i <= n; ++i)
-            if (sa[i] > w) tmp[++p] = sa[i] - w;
-        fill(cnt + 1, cnt + m + 1, 0);
-        for (int i = 1; i <= n; ++i)
-            cnt[rkt[i] = rk[tmp[i]]]++;
-        for (int i = 1; i <= m; ++i)
-            cnt[i] += cnt[i - 1];
-        for (int i = n; i >= 1; --i)
-            sa[cnt[rkt[i]]--] = tmp[i];
-        m = 0;
-        auto rp = [&](int x) { return make_pair(rk[x], rk[x + w]); };
-        for (int i = 1; i <= n; ++i)
-            tmp[sa[i]] = rp(sa[i - 1]) == rp(sa[i]) ? m : ++m;
-        copy(tmp + 1, tmp + n + 1, rk + 1);
-        if (n == m) break;
-        string s;
+void get_h() {
+    for (int i = 1, k = 0; i <= n; i++) {
+        if (rk[i] == 0) continue;
+        if (k) --k;
+        while (s[i + k] == s[sa[rk[i] - 1] + k]) ++k;
+        h[rk[i]] = k;
     }
 }

@@ -69,8 +69,7 @@ struct IO {
             s = s * 10 + (ch ^ 48), ch = getchar();
         if (ch == EOF)
             return false;
-        if (ch == '.')
-        {
+        if (ch == '.') {
             Tp eps = 0.1;
             ch = getchar();
             while (isdigit(ch))

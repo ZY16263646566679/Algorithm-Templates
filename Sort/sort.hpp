@@ -5,20 +5,17 @@ using namespace std;
 const int maxn = 1e6;
 int a[maxn + 1];
 // 对[l, r], [begin, end)范围内元素升序排序
-void simpleSort(int *begin, int *end)
-{ // 比冒泡排序稍快
+void simpleSort(int *begin, int *end) { // 比冒泡排序稍快
     int n = end - begin;
     for (int i = 0; i < n - 1; i++)
         for (int j = i + 1; j < n; j++)
-            if (begin[i] > begin[j])
-            { // 自己交换比用swap()函数快一点
+            if (begin[i] > begin[j]) { // 自己交换比用swap()函数快一点
                 begin[i] ^= begin[j];
                 begin[j] ^= begin[j];
                 begin[i] ^= begin[j];
             }
 }
-void bubbleSort(int *begin, int *end)
-{ // 最慢
+void bubbleSort(int *begin, int *end) { // 最慢
     int n = end - begin;
     for (int i = n - 1; i >= 1; i--)
         for (int j = 0; j < i; j++)
@@ -29,8 +26,7 @@ void bubbleSort(int *begin, int *end)
                 begin[j] ^= begin[j + 1];
             }
 }
-void selectSort(int *begin, int *end)
-{ // 时间复杂度O(n²)的算法中最快的
+void selectSort(int *begin, int *end) { // 时间复杂度O(n²)的算法中最快的
     int n = end - begin;
     for (int i = n - 1, Max = 0; i >= 1; i--)
     {
@@ -43,8 +39,8 @@ void selectSort(int *begin, int *end)
         Max = 0;
     }
 }
-float print_time(void fun(int, int))
-{ // 输出排序时间
+
+float print_time(void fun(int, int)) { // 输出排序时间
     clock_t begin, end;
     for (int i = 1; i <= maxn; i++) // 检查数组元素数最大时运行时间
         a[i] = rand();              // 产生short型随机数
