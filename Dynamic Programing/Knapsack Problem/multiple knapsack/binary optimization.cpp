@@ -8,14 +8,11 @@ int n, V, v[maxcnt], w[maxcnt], cnt; // cnt：组别的个数
 
 void init() { // 转化成01背包 + 二进制优化
     cin >> n >> V;
-    for (int i = 0, a, b, c; i < n; i++) {
+    for (int i = n, a, b, c; i--;) {
         cin >> a >> b >> c;
-        int k = 1; // 这一组的物品个数
-        while (k <= c) {
+        for (int k = 1; k <= c; c -= k, k *= 2) { // k：这一组的物品个数
             v[cnt] = a * k;
             w[cnt] = b * k;
-            c -= k;
-            k *= 2;
             cnt++;
         }
         if (c) { // 最后一组
