@@ -9,14 +9,15 @@ int n, a[maxn], st[maxn][22]; // 下标从1开始
 // 这里是求最大值
 void init(int n) {
     for (int i = 1; i <= n; i++) st[i][0] = a[i];
-    for (int i = 1, m = log2(n); i <= m; i++)
-        // l, r：左右两个子区间的左端点
-        for (int l = 1, r = l + (1 << i - 1); l + (1 << i) <= n + 1; l++, r++)
-            st[l][i] = M(st[l][i - 1], st[r][i - 1]);
+    for (int i = 1, m = __lg(n); i <= m; i++)
+        for (int l = 1; l + (1 << i) <= n + 1; l++)
+            st[l][i] = M(st[l][i - 1], st[l + (1 << i - 1)][i - 1]);
 }
 
 // 查询区间[l, r]内的最值
 int query(int l, int r) {
-    int len = log2(r - l + 1);
+    int len = __lg(r - l + 1);
     return M(st[l][len], st[r - (1 << len) + 1][len]);
 }
+
+// __lg函数是专门用来求以2为底的整数的对数的函数，内部使用__builtin_clz函数实现，返回值是int类型，效率比log2函数高

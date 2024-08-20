@@ -2,7 +2,11 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// φ(n)：小于等于n的所有数中与n互质的数的个数
+/**
+ * 欧拉定理：
+ * 若 (m, n) = 1，m ^ φ(n) ≡ 1 (mod n)
+ * φ(n)：小于等于n的所有数中与n互质的数的个数
+ */
 
 // 求解单个欧拉函数，时间复杂度O(√n)
 int euler(int n) {
