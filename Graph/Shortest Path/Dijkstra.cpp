@@ -17,7 +17,7 @@ void init() { // 初始化
 // 堆优化的 Dijkstra，平均时间复杂度O(mlogn)，最坏时间复杂度（稠密图）O(n²logn)
 void dijkstra(int s) {
     init();
-    priority_queue<pii, vpii, greater<pii>> q; // first 为起点到 second 的距离
+    priority_queue<pii, vpii, greater<>> q; // first 为起点到 second 的距离
     q.push({ 0, s });
     while (!q.empty()) {
         auto [d, u] = q.top(); q.pop();
