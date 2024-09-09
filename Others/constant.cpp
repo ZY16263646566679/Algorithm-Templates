@@ -1,4 +1,4 @@
-#include "head.hpp"
+#include "head.cpp"
 
 // 阶乘
 unsigned long long fact[21] = { // 0 ~ 20
