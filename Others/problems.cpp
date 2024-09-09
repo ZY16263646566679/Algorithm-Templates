@@ -1,4 +1,4 @@
-#include "head.hpp"
+#include "head.cpp"
 
 namespace N_Queens {
     int n = 13, grid[16][16]; // 超过13时会超时
