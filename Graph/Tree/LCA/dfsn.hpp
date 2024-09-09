@@ -27,7 +27,7 @@ int lca(int u, int v) {
     if (u == v)
         return u;
     if ((u = dfn[u]) > (v = dfn[v]))
-        swap(u, v);
+        swap(u, v); // u <= v
     int d = __lg(v - u++); // 适用 u 是 v 的祖先节点的情况（关键）
     return M(st[u][d], st[v - (1 << d) + 1][d]);
 }
