@@ -2,7 +2,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-const int N = 500005;
+const int N = 5e5 + 5;
 int n, a[N]; // 下标从0开始
 vector<int> ed; // end[i]：长度为i + 1的递增子序列的最小末尾值
 

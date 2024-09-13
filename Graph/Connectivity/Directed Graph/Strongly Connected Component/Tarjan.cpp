@@ -5,12 +5,12 @@ using namespace std;
 const int N = 1e5 + 5;
 int n, low[N], num[N], dfn, cnt; // 节点下标从1开始
 int sccno[N], st[N], top;
-vector<int> g[N];
+vector<int> e[N];
 
 void dfs(int u) {
     st[top++] = u;
     low[u] = num[u] = ++dfn;
-    for (int v : g[u]) {
+    for (int v : e[u]) {
         if (!num[v]) dfs(v);
         if (!sccno[v] && low[v] < low[u]) low[u] = low[v];
     }

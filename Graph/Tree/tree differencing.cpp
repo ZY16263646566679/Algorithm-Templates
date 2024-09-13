@@ -18,7 +18,7 @@ void dfs(int u, int father) {
 
 int lca(int x, int y) {} // 倍增法求LCA，此处代码略去
 
-void differencing(int u, int v, int x) { // u -> v路径上每个节点权值加x
+void diff(int u, int v, int x) { // u -> v路径上每个节点权值加x
     int a = lca(u, v);
     D[u] += x, D[v] += x, D[a] -= x, D[fa[a][0]] -= x;
 }
