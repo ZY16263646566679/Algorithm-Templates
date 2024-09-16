@@ -3,7 +3,7 @@
 using namespace std;
 
 /**
- * —— 判断条件 ——
+ * —— 判断条件（前提是连通图） ——
  * 对于无向图：
  * 1) 存在0个奇点，存在欧拉回路；
  * 2) 存在2个奇点，则为欧拉路径的起点和终点；
@@ -21,14 +21,14 @@ void dfs(int u) {
     int len = e[u].size();
     while (del[u] < len)
         dfs(e[u][del[u]++]);
-    st.push(u);
+    st.push(u); // 遍历完出边的点先入栈，并最后输出，否则会有部分点无法到达
 }
 
 int get_start() {
     // 求字典序最短的欧拉路径
     // for (int i = 1; i <= n; i++)
     //     sort(e[i].begin(), e[i].end());
-    int s = 1, c[2] {0, 0}; // 记录度数
+    int s = 1, c[2] {}; // 记录度数
     for (int i = 1; i <= n; i++) {
         if (!deg[i]) continue;
         if (abs(deg[i]) > 1 || ++c[deg[i] == 1] > 1)
@@ -39,6 +39,7 @@ int get_start() {
 }
 
 /**
- * 也可以用堆来存储边：priority_queue<int, vi, greater<>> e[N]
+ * 更加简洁的写法：
+ * 用堆来存储边：priority_queue<int, vi, greater<>> e[N]
  * 然后从堆中取最小值来保证字典序最小
  */
