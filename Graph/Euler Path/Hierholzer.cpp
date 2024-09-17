@@ -21,7 +21,7 @@ void dfs(int u) {
     int len = e[u].size();
     while (del[u] < len)
         dfs(e[u][del[u]++]);
-    st.push(u); // 遍历完出边的点先入栈，并最后输出，否则会有部分点无法到达
+    st.push(u); // 让遍历完出边的点先入栈，并最后输出，否则会有部分点无法到达
 }
 
 int get_start() {

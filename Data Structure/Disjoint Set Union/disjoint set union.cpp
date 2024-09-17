@@ -2,11 +2,11 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-const int maxn = 1e4;
-int s[maxn + 1], d[maxn + 1];
+const int N = 1e4 + 5;
+int s[N], d[N];
 
 void init() {
-    for (int i = 1; i <= maxn; i++) {
+    for (int i = 1; i <= N; i++) {
         s[i] = i;
         // d[i] = 0;
     }
@@ -21,9 +21,8 @@ int find(int x) {
     return s[x];
 }
 
-bool Union(int x, int y, int w = 0) {
-    int rootx = find(x);
-    int rooty = find(y);
+bool merge(int x, int y, int w = 0) {
+    int rootx = find(x), rooty = find(y);
     // 带权
     // if (rootx == rooty) {
     //     if (d[x] - d[y] != w)
@@ -50,9 +49,8 @@ public:
     int root(int v) {
         return parents[v] == v ? v : parents[v] = root(parents[v]);
     }
-    bool join(int v, int u) { // 返回是否是在同一集合
-        int a = root(v);
-        int b = root(u);
+    bool join(int u, int v) { // 返回是否是在同一集合
+        int a = root(u), b = root(v);
         if (a == b)
             return false;
         if (sizes[a] > sizes[b])
