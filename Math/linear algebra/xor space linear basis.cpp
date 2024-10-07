@@ -10,11 +10,11 @@ bool zero; // 是否有异或为0的组合
 
 void add(ll x) {
     for (int i = M; i--;)
-        if (x >> i == 1) {
+        if (x >> i) {
             if (!p[i]) {
                 p[i] = x;
                 return;
-            } 
+            }
             x ^= p[i];
         }
     zero = true;
