@@ -12,7 +12,7 @@ bool done[N];
 // 堆优化版 Prim，时间复杂度 O(mlogn)，适合稀疏图
 int prim() {
     int ans = 0, cnt = 0;
-    priority_queue<pii, vector<pii>, greater<pii>> q;
+    priority_queue<pii, vector<pii>, greater<>> q;
     q.push({ 0, 1 });
     memset(dis, 0x7f, sizeof(dis));
     while (!q.empty()) {
