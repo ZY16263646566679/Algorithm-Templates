@@ -34,9 +34,9 @@ int get_start() {
         if (!deg[i]) continue;
         if (abs(deg[i]) > 1 || ++c[deg[i] == 1] > 1)
             return 0;
-        if (deg[i] == 1) s = i;
+        if (deg[i] > 0) s = i;
     }
-    return c[-1] == c[1] ? s : 0;
+    return c[0] == c[1] ? s : 0;
 }
 
 /**
