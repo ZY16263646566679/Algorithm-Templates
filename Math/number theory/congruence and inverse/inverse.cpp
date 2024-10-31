@@ -15,7 +15,7 @@ const int p = 998244353;
  */
 int fermat(int x) {
     int res = 1;
-    for (int n = p - 2; n; n >>= 1) {
+    for (int n = p - 2; n; n /= 2) {
         if (n & 1) res = (ll)res * x % p;
         x = (ll)x * x % p;
     }
