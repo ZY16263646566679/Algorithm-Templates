@@ -1,26 +1,20 @@
 #include "head.cpp"
 
 namespace N_Queens {
-    int n = 13, grid[16][16]; // 超过13时会超时
-    int dfs(int row) {
+    int n = 13; // 超过13会超时
+    vector<array<int, 2>> p;
+
+    int dfs(int r) {
+        if (r == n) return 1;
         int res = 0;
-        for (int i = 0; i < n; i++) {
-            if (grid[row][i]) continue;
-            if (row == n - 1) {
-                res++;
-                continue;
-            }
-            for (int j = 1; row + j < n; j++) {
-                grid[row + j][i]++;
-                if (i - j >= 0) grid[row + j][i - j]++;
-                if (i + j < n) grid[row + j][i + j]++;
-            }
-            res += dfs(row + 1);
-            for (int j = 1; row + j < n; j++) {
-                grid[row + j][i]--;
-                if (i - j >= 0) grid[row + j][i - j]--;
-                if (i + j < n) grid[row + j][i + j]--;
-            }
+        for (int c = 0; c < n; c++) {
+            for (auto& [x, y] : p)
+                if (c == y || r - x == abs(c - y))
+                    goto end;
+            p.push_back({r, c});
+            res += dfs(r + 1);
+            p.pop_back();
+            end:;
         }
         return res;
     }

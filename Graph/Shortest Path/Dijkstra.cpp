@@ -18,14 +18,13 @@ void init() { // 初始化
 void dijkstra(int s) {
     init();
     priority_queue<pii, vpii, greater<>> q; // first 为起点到 second 的距离
-    q.push({ 0, s });
+    dis[s] = 0, q.push({ 0, s });
     while (!q.empty()) {
         auto [d, u] = q.top(); q.pop();
         if (dis[u] < d) continue;
-        dis[u] = d;
         for (auto& [v, w] : e[u])
             if (d + w < dis[v]) {
-                dis[v] = d + w; // 小优化
+                dis[v] = d + w;
                 q.push({ d + w, v });
                 pre[v] = u;
             }
