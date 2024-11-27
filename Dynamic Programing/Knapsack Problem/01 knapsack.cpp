@@ -9,10 +9,10 @@ int dp[N][N];
 
 int calc() {
     for (int i = 1; i <= n; i++) {
-        for (int j = 1; j <= V; j++)
+        for (int j = 1; j < v[i]; j++)
             dp[i][j] = dp[i - 1][j];
         for (int j = v[i]; j <= V; j++)
-            dp[i][j] = max(dp[i][j], dp[i - 1][j - v[i]] + w[i]);
+            dp[i][j] = max(dp[i - 1][j], dp[i - 1][j - v[i]] + w[i]);
     }
     return dp[n][V];
 }

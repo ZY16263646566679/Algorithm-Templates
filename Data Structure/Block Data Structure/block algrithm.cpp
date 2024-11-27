@@ -4,20 +4,18 @@ using namespace std;
 const int N = 1e6 + 5;
 int n, a[N]; // 下标从0开始
 /**
- * size_：块的大小，m：块的数量
- * pos[i]：a[i] 所在块的标号
- * st/ed[i]：第 i 的块的开始和结束位置
+ * sz：块的大小，m：块的数量
+ * i / sz：下标为 i 的元素的块号（从 0 开始）
+ * st/ed[i]：第 i 块的开始/结束下标
  */
-int size_, m, pos[N], st[N], ed[N];
+int sz, m, st[N], ed[N];
 
 void init() {
-    size_ = sqrt(n);
-    m = (n + size_ - 1) / size_;
-    for (int i = 0; i < n; i++)
-        pos[i] = i / size_;
+    sz = sqrt(n);
+    m = (n + sz - 1) / sz;
     for (int i = 0; i < m; i++) {
-        st[i] = i * size_;
-        ed[i] = i * size_ + size_ - 1;
+        st[i] = i * sz;
+        ed[i] = i * sz + sz - 1;
     }
     ed[m - 1] = n - 1;
 }
@@ -33,7 +31,7 @@ void init_sum() {
 
 // 让 [l, r] 内的每个元素加 d
 void update(int l, int r, int d) {
-    int p = pos[l], q = pos[r];
+    int p = l / sz, q = r / sz;
     if (p == q) {
         for (int i = l; i <= r; i++) a[i] += d;
         sum[p] += d * (r - l + 1);
@@ -48,7 +46,7 @@ void update(int l, int r, int d) {
 
 // 查询 [l, r] 内每个元素的和
 int query(int l, int r) {
-    int p = pos[l], q = pos[r], res = 0;
+    int p = l / sz, q = r / sz, res = 0;
     if (p == q) {
         for (int i = l; i <= r; i++) res += a[i];
         return res;
