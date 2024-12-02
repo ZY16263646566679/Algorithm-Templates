@@ -12,7 +12,7 @@ void dfs(int u) {
     low[u] = num[u] = ++dfn;
     for (int v : e[u]) {
         if (!num[v]) dfs(v);
-        if (!sccno[v] && low[v] < low[u]) low[u] = low[v];
+        if (!sccno[v]) low[u] = min(low[u], low[v]);
     }
     if (low[u] != num[u]) return;
     cnt++; // SCC 数量加一
