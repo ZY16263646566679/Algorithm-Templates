@@ -1,13 +1,13 @@
+// 二维数点
 #include <bits/stdc++.h>
 using namespace std;
 
+// 例题：https://www.luogu.com.cn/problem/P2163
 const int N = 5e5 + 5;
 /**
  * c：操作数量
- * op[]：操作数组
  * ny[]：y 坐标数组
  * k：y 坐标数量
- * ans[]：答案数组
  */
 int n, m, c, ans[N];
 int ny[N * 3], k, t[N * 3];
