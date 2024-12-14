@@ -6,11 +6,12 @@ using namespace std;
 #define lp (p << 1)
 #define rp (p << 1 | 1)
 #define ls lp, l, mid
-#define rs rp, mid, r // 注意不是mid + 1！！
+#define rs rp, mid, r // 注意不是 mid + 1！！
 
-const int N = 20005;
+const int N = 2e4 + 5;
 int tag[N]; // 标记：线段是否有效，能否用于计算宽度
-double len[N], x[N]; // len：区间的宽度，x：x坐标
+double len[N], x[N]; // len：区间的宽度，x：x 坐标
+
 struct ScanLine {
     double y; // 边的y坐标
     double lx, rx; // 边的左右x坐标

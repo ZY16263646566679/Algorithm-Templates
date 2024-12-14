@@ -26,7 +26,7 @@ int fermat(int x) {
 // 详见 extend Euclidean.cpp
 
 // 线性递推求多个逆元
-const int N = 1e7 + 5;
+const int N = 1e6 + 5;
 int inv[N];
 
 void init() {
